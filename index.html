@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Anime JS Text Animation</title>
+</head>
+<body>
+    <section>
+        <h2 class="text">AnimeJS Text Animation Effects</h2>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous"></script>
+    <script>
+        //split text into words
+
+        const text = document.querySelector('.text');
+        text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>");
+
+        anime.timeline({
+            loop:true
+        })
+        .add({
+            targets:'.text span',
+            translateY:[-600, 0], //[start value, end value]
+            scale:[10,1],
+            opacity:[0,1],
+            easing:"easeOutExpo",
+            duration:1500, //1.5s
+            delay:anime.stagger(100),
+        })
+
+        .add({
+            targets:'.text span',
+            translateX:[0, -1000], //[start value, end value]
+            scale:[1,1],
+            opacity:[1,0],
+            easing:"easeOutExpo",
+            duration:2000, //1.5s
+            delay:anime.stagger(100),
+        })
+
+        .add({
+            targets:'.text span',
+            translateX:[1000, 0], //[start value, end value]
+            scale:[1,1],
+            opacity:[0,1],
+            easing:"easeOutExpo",
+            duration:2000, //1.5s
+            delay:anime.stagger(100),
+        })
+
+        .add({
+            targets:'.text span',
+            translateX:[0, 0], //[start value, end value]
+            scale:[1,50],
+            opacity:[1, 0],
+            easing:"easeOutExpo",
+            duration:2000, //1.5s
+            delay:anime.stagger(100),
+        })
+    </script>
+</body>
+</html>
